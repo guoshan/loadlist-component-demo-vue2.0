@@ -1,15 +1,13 @@
 <template>
     <div>
-        列表
+        什么乱七八糟的
     </div>
 </template>
-<style>
-</style>
 <script>
-    export default {
-        data() {
+    export default{
+        data(){
             return {
-               
+                
             }
         }
     }

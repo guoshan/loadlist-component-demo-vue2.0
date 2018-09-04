@@ -1,11 +1,11 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import App from './app.vue'
-import routerConfig from './router'
-Vue.use(VueRouter)
-const router = new VueRouter(routerConfig)
+import Vue from 'vue';
+import router from './router.js'
+import app from './app.vue'
+
+
 new Vue({
-    el:"#app",
+    el: '#app',
     router:router,
-    render:h=>h(App)//h->createElement 渲染html
-})
+    render: h => h(app)//渲染组件内容为html
+});
+
