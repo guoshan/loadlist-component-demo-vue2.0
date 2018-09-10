@@ -1,17 +1,22 @@
 const path = require('path');
 const wepack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 module.exports = {
-    entry:'./src/main.js',
-    output:{
-        path:__dirname + '/dist',
-        publicPath:'/static/',
-        filename:'build.js'
+    entry:{
+        lib:['vue','axios','weui.js','weui'],
+        common:['./src/js/common.js'],
+        index:"./src/js/main.js"
+    },
+    output: {
+        path: __dirname + "/public",//打包后的文件存放的地方
+		filename:'js/[name].js?[hash]',//[chunkhash]
+        chunkFilename: 'js/chunk/[name].[hash].js',
     },
     devServer: {
         historyApiFallback: true,//不跳转
         inline: true,//实时刷新
-        hot:true,       
+        hot:true,
     },
     module: {
         rules: [
@@ -44,6 +49,13 @@ module.exports = {
         }
     },
     plugins:[
-        new wepack.optimize.UglifyJsPlugin()//压缩js
+        new HtmlWebpackPlugin({
+            filename: './index.html',
+            template:"./src/index.html",
+            chunks: ['index','common','lib']
+        }),
+        new wepack.optimize.UglifyJsPlugin({//压缩js
+            names: ['common','lib']
+        })
     ]
 }

@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router'
 
-import list from './views/list.vue'
-import detail from './views/detail.vue'
+import list from '../views/list.vue'
+import detail from '../views/detail.vue'
 
 Vue.use(VueRouter);
 
